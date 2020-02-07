@@ -82,7 +82,6 @@ pipeline {
 			steps {
 				checkout scm
 				echo "$PATH"
-				echo "$env.BRANCH_NAME"
 				echo "$env.BUILD_NUMBER"
 				echo "$env.BUILD_ID"
 				echo "$env.JOB_NAME"
@@ -97,17 +96,26 @@ pipeline {
 			}
 		}
 
-		stage('Test'){
+		// stage('Test'){
+		// 	steps {
+		// 		sh "mvn test"
+		// 	}
+		// }
+
+		// stage('Integration Test'){
+		// 	steps {
+		// 		sh "mvn failsafe:integration-test failsafe:verify"
+		// 	}
+		// }
+
+		stage('Package'){
 			steps {
-				sh "mvn test"
-			}
+				sh "mvn package -DskipTests"
+				archiveArtifacts artifacts: 'target/*', fingerprint: true
+			}	
 		}
 
-		stage('Integration Test'){
-			steps {
-				sh "mvn failsafe:integration-test failsafe:verify"
-			}
-		}
+
 	}
 	post {
         always {
