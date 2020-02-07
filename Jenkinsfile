@@ -57,12 +57,15 @@
 // 	}
 // }
 
-def dockerHome = tool 'myDocker'
-def mavenHome  = tool 'myMaven'
 
 pipeline {
 
 	agent any
+
+	environment {
+		dockerHome = tool 'myDocker'
+		mavenHome  = tool 'myMaven'
+	}
 
 	stages {
 		stage('Initialize'){
