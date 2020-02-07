@@ -33,13 +33,51 @@
 // 	}
 // }
 
+//node:6.3
+//npm --version
+// pipeline {
+// 	agent { docker {image 'maven:3.6.3'}}
+// 	stages {
+// 		stage('build') {
+// 			steps {
+// 				sh 'mvn --version'
+// 			}
+// 		}
+// 	}
+// }
+
+// pipeline {
+// 	agent { docker {image 'maven:3.6.3'}}
+// 	stages {
+// 		stage('build') {
+// 			steps {
+// 				sh 'mvn --version'
+// 			}
+// 		}
+// 	}
+// }
+
 pipeline {
-	agent { docker {image 'maven:3.6.3'}}
+
+	agent any
+
 	stages {
-		stage('build') {
-			steps {
-				sh 'mvn --version'
-			}
+		stage('Initialize'){
+			def dockerHome = tool 'myDocker'
+			def mavenHome  = tool 'myMaven'
+			env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+		}
+
+		stage('Checkout') {
+			checkout scm
+		}
+
+		stage('Build'){
+			sh "mvn clean compile"
+		}
+
+		stage('Test'){
+			sh "mvn test"
 		}
 	}
 }
