@@ -122,6 +122,14 @@ pipeline {
 			
 		}
 
+		stage('Push Docker Image') {
+			steps {
+				//sh "docker build -t rangakaranam/currency-exchange-azure:$env.BUILD_TAG  --pull --no-cache ."
+				docker.build("rangakaranam/currency-exchange-azure:${env.BUILD_ID}")
+			}
+			
+		}
+
 	}
 	post {
         always {
