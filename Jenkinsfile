@@ -57,11 +57,10 @@
 // 	}
 // }
 
+def dockerHome = tool 'myDocker'
+def mavenHome  = tool 'myMaven'
 
 pipeline {
-
-	def dockerHome = tool 'myDocker'
-	def mavenHome  = tool 'myMaven'
 
 	agent any
 
