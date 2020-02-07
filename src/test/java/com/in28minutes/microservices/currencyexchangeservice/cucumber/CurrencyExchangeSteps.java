@@ -26,7 +26,7 @@ public class CurrencyExchangeSteps {
                 .setContentType(ContentType.JSON)
                 .setAccept(ContentType.JSON)
                 .build();
-        String url = "http://localhost:8080/currency-exchange/from/"+from+"/to/"+to;
+        String url = "http://localhost:8000/currency-exchange/from/"+from+"/to/"+to;
         System.out.println(url);
 		Response request = when().request(Method.GET,url);
 		ValidatableResponse then = request.then();

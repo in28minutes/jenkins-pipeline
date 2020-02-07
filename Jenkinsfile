@@ -63,6 +63,9 @@
 // }
 
 
+// CHECK THIS OUT - post {
+// sh 'echo "Fail!"; exit 1'
+
 pipeline {
 
 	agent any
@@ -78,6 +81,13 @@ pipeline {
 		stage('Checkout') {
 			steps {
 				checkout scm
+				echo '$PATH'
+				echo '$BRANCH_NAME'
+				echo '$BUILD_NUMBER'
+				echo '$BUILD_ID'
+				echo '$JOB_NAME'
+				echo '$BUILD_TAG'
+				echo '$BUILD_URL'
 			}
 		}
 
@@ -99,4 +109,23 @@ pipeline {
 			}
 		}
 	}
+	post {
+        always {
+            echo 'This will always run'
+        }
+        success {
+            echo 'This will run only if successful'
+        }
+        failure {
+            echo 'This will run only if failed'
+        }
+        unstable {
+            echo 'This will run only if the run was marked as unstable'
+        }
+        changed {
+            echo 'This will run only if the state of the Pipeline has changed'
+            echo 'For example, if the Pipeline was previously failing but is now successful'
+        }
+    }
+
 }
