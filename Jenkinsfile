@@ -115,6 +115,16 @@ pipeline {
 			}	
 		}
 
+		stage('Sonar') {
+			steps {
+				try {
+					sh "mvn sonar:sonar"
+				} catchr(error) {
+					echo "Error running sonar ${error}"
+				}
+			}
+		}
+
 		stage('Build Docker Image') {
 			steps {
 				//sh "docker build -t rangakaranam/currency-exchange-azure:$env.BUILD_TAG  --pull --no-cache ."
@@ -130,6 +140,7 @@ pipeline {
 				script {
 					docker.withRegistry( '', 'dockerhub' ) {
 						dockerImage.push()
+						dockerImage.push('latest')
 					}
 				}
 			}

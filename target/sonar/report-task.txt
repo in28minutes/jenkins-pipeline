@@ -1,0 +1,6 @@
+projectKey=com.in28minutes.microservices:currency-exchange-basic
+serverUrl=http://localhost:9000
+serverVersion=7.9.2.30863
+dashboardUrl=http://localhost:9000/dashboard?id=com.in28minutes.microservices%3Acurrency-exchange-basic
+ceTaskId=AXAgBEywooVh-Tb0UPg4
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXAgBEywooVh-Tb0UPg4
