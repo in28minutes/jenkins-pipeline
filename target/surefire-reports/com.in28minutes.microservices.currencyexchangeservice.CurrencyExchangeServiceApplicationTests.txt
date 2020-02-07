@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.in28minutes.microservices.currencyexchangeservice.CurrencyExchangeServiceApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 35.336 s - in com.in28minutes.microservices.currencyexchangeservice.CurrencyExchangeServiceApplicationTests
