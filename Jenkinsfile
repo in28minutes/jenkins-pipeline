@@ -71,15 +71,21 @@ pipeline {
 	stages {
 		
 		stage('Checkout') {
-			checkout scm
+			steps {
+				checkout scm
+			}
 		}
 
 		stage('Build'){
-			sh "mvn clean compile"
+			steps {
+				sh "mvn clean compile"
+			}
 		}
 
 		stage('Test'){
-			sh "mvn test"
+			steps {
+				sh "mvn test"
+			}
 		}
 	}
 }
