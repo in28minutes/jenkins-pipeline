@@ -119,7 +119,7 @@ pipeline {
 			steps {
 				try {
 					sh "mvn sonar:sonar"
-				} catchr(error) {
+				} catch(error) {
 					echo "Error running sonar ${error}"
 				}
 			}
