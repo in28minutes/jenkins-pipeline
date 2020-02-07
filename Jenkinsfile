@@ -130,7 +130,7 @@ pipeline {
 
 		stage('Sonar') {
 			steps {
-				sh "mvn sonar:sonar"
+				sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar"
 			}
 		}
 
