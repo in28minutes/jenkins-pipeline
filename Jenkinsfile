@@ -82,12 +82,12 @@ pipeline {
 			steps {
 				checkout scm
 				echo "$PATH"
-				echo "$BRANCH_NAME"
+				echo "$env.BRANCH_NAME"
 				echo $BUILD_NUMBER
-				echo '$BUILD_ID'
-				echo '$JOB_NAME'
-				echo '$BUILD_TAG'
-				echo '$BUILD_URL'
+				echo "$env.BUILD_ID"
+				echo "$env.JOB_NAME"
+				echo "$env.BUILD_TAG"
+				echo "$env.BUILD_URL"
 			}
 		}
 
