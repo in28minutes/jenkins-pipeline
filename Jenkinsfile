@@ -130,11 +130,7 @@ pipeline {
 
 		stage('Sonar') {
 			steps {
-				try {
-					sh "mvn sonar:sonar"
-				} catch(error) {
-					echo "Error running sonar ${error}"
-				}
+				sh "mvn sonar:sonar"
 			}
 		}
 
