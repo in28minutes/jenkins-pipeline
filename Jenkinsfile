@@ -70,10 +70,6 @@ pipeline {
 
 	stages {
 		
-		stage('Initialize'){
-			
-		}
-
 		stage('Checkout') {
 			checkout scm
 		}
