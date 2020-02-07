@@ -81,9 +81,9 @@ pipeline {
 		stage('Checkout') {
 			steps {
 				checkout scm
-				echo '$PATH'
-				echo '$BRANCH_NAME'
-				echo '$BUILD_NUMBER'
+				echo "$PATH"
+				echo "$BRANCH_NAME"
+				echo $BUILD_NUMBER
 				echo '$BUILD_ID'
 				echo '$JOB_NAME'
 				echo '$BUILD_TAG'
