@@ -115,6 +115,9 @@ pipeline {
 			}	
 		}
 
+		stage('Build Docker Image') {
+			sh "docker build -t rangakaranam/currency-exchange-azure:$env.BUILD_TAG  --pull --no-cache ."
+		}
 
 	}
 	post {
