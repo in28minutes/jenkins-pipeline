@@ -117,16 +117,20 @@ pipeline {
 
 		stage('Build Docker Image') {
 			steps {
-				sh "docker build -t rangakaranam/currency-exchange-azure:$env.BUILD_TAG  --pull --no-cache ."
+				//sh "docker build -t rangakaranam/currency-exchange-azure:$env.BUILD_TAG  --pull --no-cache ."
+				script {
+					dockerImage = docker.build("rangakaranam/currency-exchange-azure:${env.BUILD_ID}")
+				}
 			}
 			
 		}
 
 		stage('Push Docker Image') {
 			steps {
-				//sh "docker build -t rangakaranam/currency-exchange-azure:$env.BUILD_TAG  --pull --no-cache ."
 				script {
-					docker.build("rangakaranam/currency-exchange-azure:${env.BUILD_ID}")
+					docker.withRegistry( '', 'dockerhub' ) {
+						dockerImage.push()
+					}
 				}
 			}
 			
