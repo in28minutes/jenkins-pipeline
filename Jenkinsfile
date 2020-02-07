@@ -1,10 +1,15 @@
 //Limited form of Groovy Syntax.
+
 //SCRIPTED PIPELINES
 //Node - a machine to run the pipelines
 //Stage blocks are optional in scripted pipelines
 node {
+	stage('Build') {
 		echo "Build"
+	}
+	stage('Test') {
 		echo "Test"
+	}
 }
 
 //We are using declarative syntax - All your pipeline definition is in the pipeline block.
@@ -27,3 +32,14 @@ node {
 // 		}
 // 	}
 // }
+
+pipeline {
+	agent { docker {image 'maven:3.3.3'}}
+	stages {
+		stage('build') {
+			steps {
+				sh 'mvn --version'
+			}
+		}
+	}
+}
