@@ -1,3 +1,4 @@
+//DELETE TARGET FOLDER
 //Admin Password
 //Initialize Plugins
 //Setup Maven and Docker
