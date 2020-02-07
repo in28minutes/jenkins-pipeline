@@ -2,6 +2,7 @@
 
 //SCRIPTED PIPELINES
 //Node - a machine to run the pipelines
+//Stage blocks are optional in scripted pipelines
 node {
 		echo "Build"
 		echo "Test"
